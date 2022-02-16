@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --mode development --open --hot",
-    "build": "webpack --mode production"
+    "start": "NODE_ENV=production node server/server.js",
+    "build": "NODE_ENV=production webpack",
+    "dev": "NODE_ENV=development nodemon server/server.js --open & NODE_ENV=development webpack-dev-server --open --hot"
   },
   "repository": {
     "type": "git",
@@ -20,6 +20,8 @@
   },
   "homepage": "https://github.com/KristenWAlthoff/solo-project#readme",
   "dependencies": {
+    "cross-env": "^7.0.3",
+    "eslint": "^8.9.0",
     "express": "^4.17.2",
     "pg": "^8.7.3",
     "postgres": "^1.0.2",

@@ -2,7 +2,7 @@ const path = require('path');
 const HWP = require('html-webpack-plugin');
 
 module.exports = {
-    mode: 'production',
+    mode: process.env.NODE_ENV,
     entry: path.join(__dirname, 'client/index.js'),
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -21,9 +21,19 @@ module.exports = {
         }],
     },
     plugins: [
-        new HWP (
-            {template: path.join(__dirname, 'client/index.html')}
+        new HWP ({
+            title: 'Development',
+            template: path.join(__dirname, 'client/index.html')}
         )
     ],
-    //need localhost:3000 proxy server??
-}
+    devServer: {
+        static: {
+            publicPath: '/build',
+            directory: path.resolve(__dirname, 'dist')
+        },
+        //need localhost:3000 proxy server??
+        proxy: {
+            '/api': 'http://localhost:3000'
+        }
+    }
+};
