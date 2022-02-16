@@ -2,14 +2,24 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const PORT = 3000;
+const books_controller = require('./controllers/books_controller');
 
 //allows us to recognize incoming request as json
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-app.use(express.static(path.resolve(__dirname, '../client')));
+//app.use(express.static(path.resolve(__dirname, '../client')))
+
+app.get('/books', books_controller.getTitles, (req, res) =>{
+    console.log('we made it here')
+    res.send(res.locals.books);
+})
+
+//when a user clicks on a book, it renders a new page
+//that page has all of the info for that book (get its id from request; GET info about that book, send back to page)
 
 //global error handler
-app.use((err, req, res, next) => {
+app.use((err, req, res, next) => {x
     const defaultErr = {
         log: 'Express error handler caught unknown middleware error',
         status: 500,
