@@ -19,4 +19,22 @@ books_controller.getTitles = (req, res, next) => {
         });
 };
 
+books_controller.getAuthors = (req, res, next) => {
+    const query = `SELECT b.*, a.name
+    FROM books b LEFT OUTER JOIN authors a
+    ON b.author_id = a._id`
+    db.query(query)
+        .then((result) => {
+            res.locals.authors = []
+            result.rows.forEach((book) => res.locals.authors.push(book.name));
+            return next()
+        })
+        .catch((err) =>{
+            return next({
+                log: `cannot get authors. ERROR: ${err}`,
+                message: {err: 'Error occurred in books_controller.getAuthors'}
+            });
+        });
+}
+
 module.exports = books_controller;

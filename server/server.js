@@ -16,7 +16,7 @@ app.get('/books', books_controller.getTitles, (req, res) =>{
     res.send(res.locals.books);
 })
 
-app.get('/authors', books_controller.getAuthors, (req, res) => {
+app.get('/authors', books_controller.getAuthors, (req, res) =>{
     res.send(res.locals.authors)
 })
 

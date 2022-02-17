@@ -8,8 +8,8 @@ class BookDisplay extends Component {
         this.state = {
             // titles: ['Cloud Atlas', 'The God of Small Things', 'Midnight\'s Children', 'The Song of Achilles'],
             titles: [],
-            // authors: []
-            authors: ['David Mitchell', 'Arundhati Roy', 'Salman Rushdie', 'Madeline Miller'] 
+            authors: []
+            // authors: ['David Mitchell', 'Arundhati Roy', 'Salman Rushdie', 'Madeline Miller'] 
         }
     }
 
@@ -20,11 +20,23 @@ class BookDisplay extends Component {
         })
         .then((res) => res.json())
         .then((data) => {
-            console.log('my data:', data);
+            console.log('titles data:', data);
             if (!Array.isArray(data)) titles = [];
             return this.setState({
                 titles: data,
             });
+        })
+        .catch(err => console.log('BookDisplay.componentDidMount: get characters: ERROR: ', err));
+        fetch('http://localhost:3000/authors', {
+            method: 'GET'
+        })
+        .then((res) => res.json())
+        .then((data) => {
+            console.log('author data: ', data);
+            if (!Array.isArray(data)) authors = [];
+            return this.setState({
+                authors: data,
+            })
         })
         .catch(err => console.log('BookDisplay.componentDidMount: get characters: ERROR: ', err));
     }
@@ -35,7 +47,7 @@ class BookDisplay extends Component {
     render() {
         console.log(this.state.titles);
         const allBooks = []
-        for (let i =0; i < this.state.authors.length; i++) {
+        for (let i =0; i < this.state.titles.length; i++) {
             allBooks.push(<Book title={this.state.titles[i]} author={this.state.authors[i]}/>);
         }
         return (
