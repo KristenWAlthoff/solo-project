@@ -4,6 +4,10 @@ class Book extends Component {
     constructor(props) {
         super(props);    
     }
+
+    //try to do a fetch request to an API here
+    //render the cover photo for the book inside the render()
+
     render(){
         return (
             <div>

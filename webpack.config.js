@@ -32,8 +32,10 @@ module.exports = {
             directory: path.resolve(__dirname, 'dist')
         },
         //need localhost:3000 proxy server??
+        headers: { 'Access-Control-Allow-Origin': '*' },
         proxy: {
-            '/api': 'http://localhost:3000'
+            '/api': 'http://localhost:3000',
+            secure: false,
         }
     }
 };

@@ -7,8 +7,8 @@ books_controller.getTitles = (req, res, next) => {
     const query = `SELECT title FROM books`
     db.query(query)
         .then((result) =>{
-            console.log(result.rows);
-            res.locals.books = result.rows;
+            res.locals.books = [];
+            result.rows.forEach((book) => res.locals.books.push(book.title));
             return next()
         })
         .catch((err) =>{

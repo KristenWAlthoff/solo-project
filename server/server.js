@@ -3,16 +3,21 @@ const app = express();
 const path = require('path');
 const PORT = 3000;
 const books_controller = require('./controllers/books_controller');
+const cors = require('cors');
 
 //allows us to recognize incoming request as json
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cors());
 
 //app.use(express.static(path.resolve(__dirname, '../client')))
 
 app.get('/books', books_controller.getTitles, (req, res) =>{
-    console.log('we made it here')
     res.send(res.locals.books);
+})
+
+app.get('/authors', books_controller.getAuthors, (req, res) => {
+    res.send(res.locals.authors)
 })
 
 //when a user clicks on a book, it renders a new page
