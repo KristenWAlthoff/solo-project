@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
-// import HomePage from './HomePage.jsx';
 import BookDisplay from './BookDisplay.js'
+import NewBook from './NewBook.js'
 
 //add app here
 

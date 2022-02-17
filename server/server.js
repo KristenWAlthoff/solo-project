@@ -20,6 +20,10 @@ app.get('/authors', books_controller.getAuthors, (req, res) =>{
     res.send(res.locals.authors)
 })
 
+app.post('/authors', books_controller.addAuthor, (req, res) =>{
+    res.status(200)
+})
+
 //when a user clicks on a book, it renders a new page
 //that page has all of the info for that book (get its id from request; GET info about that book, send back to page)
 

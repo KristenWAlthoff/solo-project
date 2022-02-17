@@ -20,7 +20,6 @@ class BookDisplay extends Component {
         })
         .then((res) => res.json())
         .then((data) => {
-            console.log('titles data:', data);
             if (!Array.isArray(data)) titles = [];
             return this.setState({
                 titles: data,
@@ -32,7 +31,6 @@ class BookDisplay extends Component {
         })
         .then((res) => res.json())
         .then((data) => {
-            console.log('author data: ', data);
             if (!Array.isArray(data)) authors = [];
             return this.setState({
                 authors: data,
