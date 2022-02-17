@@ -20,8 +20,12 @@ app.get('/authors', books_controller.getAuthors, (req, res) =>{
     res.send(res.locals.authors)
 })
 
+app.post('/books', books_controller.addBook, books_controller.getTitles, (req, res) =>{
+    res.send(res.locals.books);
+})
+
 // app.post('/authors', books_controller.addAuthor, (req, res) =>{
-//     res.status(200)
+//     res.status(200).send('INSERT AUTHOR ID DATA HEREEEEEEE')
 // })
 
 //when a user clicks on a book, it renders a new page

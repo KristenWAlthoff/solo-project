@@ -6,6 +6,19 @@ class NewBook extends Component {
         this.state = {
         }
     }
+    render(){
+        return (
+            <div>
+                <h1>Add a Book!</h1>
+                <form>
+                    <label>
+                        Title:
+                        <input type = 'text' />
+                    </label>
+                </form>
+            </div>
+        )
+    }
 
 
 }

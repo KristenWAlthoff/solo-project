@@ -4,6 +4,7 @@ import { Route, Routes, BrowserRouter } from 'react-router-dom';
 import BookDisplay from './BookDisplay.js'
 import NewBook from './NewBook.js'
 
+
 //add app here
 
 class App extends Component {
@@ -13,7 +14,8 @@ class App extends Component {
     render(){
         return (
             <div>
-                <h1>arches</h1>
+                <h1>arch-ive</h1>
+                <NewBook />
                 <BookDisplay />
             </div>
         )
